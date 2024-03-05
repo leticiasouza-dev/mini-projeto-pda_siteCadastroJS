@@ -11,11 +11,22 @@ class Pessoa{
 let usuario = new Pessoa();
 
 let botaoCadastro = document.getElementById('cadastro');
-let inputs = document.getElementsByTagName('input')
+let inputs = document.getElementsByTagName('input');
 
 botaoCadastro.addEventListener('click', function(evento){
     evento.preventDefault();
-    if(isNaN(inputs)){
+
+    let camposNaoPreenchidos = false;
+
+    for(let i = 1; i < inputs.length; i++){
+
+        if(inputs[i].value.trim() == ''){
+            camposNaoPreenchidos = true;
+            break;
+        }
+    }
+
+    if(camposNaoPreenchidos){
         alert("Preencha os campos");
     } else{
         window.location.href = 'pages/listaUsuariosCadastrados.html';
