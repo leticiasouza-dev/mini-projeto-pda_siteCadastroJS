@@ -60,5 +60,7 @@ botaoCadastro.addEventListener('click', function(evento){
     verificacaoCampos();
 
     let usuario = new Pessoa(nomeCompleto, celular, email, senha, dataNascimento);
+
+    localStorage.setItem('usuario', JSON.stringify(usuario));
 })
 
