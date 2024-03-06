@@ -37,7 +37,10 @@ function mostrarCadastro(){
     
 }
 
-    
+const buttonAddNovo = document.getElementById('button-addNovo');
+buttonAddNovo.addEventListener('click', function() {
+    window.location.href = '../index.html';
+})
 
 
 
