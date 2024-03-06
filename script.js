@@ -85,6 +85,6 @@ botaoCadastro.addEventListener('click', function(evento){
     const usuario = new Pessoa(nomeCompleto, celular, email, senha, dataNascimento);
     cadastro.push(usuario);
 
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('cadastro', JSON.stringify(cadastro));
 })
 
