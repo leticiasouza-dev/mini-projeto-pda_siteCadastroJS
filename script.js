@@ -41,7 +41,7 @@ function verificacaoCampos(){ // faz a verificação dos campos(inputs)
         } else{
             alert("Cadastro efetuado com sucesso");
            
-            window.location.href = 'pages/listaUsuariosCadastrados.html';
+            window.location.href = 'pages/listaFuncionariosCadastrados.html';
         }
         
     }
