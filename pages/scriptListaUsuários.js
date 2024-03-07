@@ -45,11 +45,6 @@ function mostrarCadastro(cadastro){
 
 }
 
-const buttonAddNovo = document.getElementById('button-addNovo');
-buttonAddNovo.addEventListener('click', function() {
-    window.location.href = '../index.html';
-})
-
 function removerCadastro(cadastroRemovido){ // função para remover cadastro
     cadastro = cadastro.filter(pessoa => pessoa !== cadastroRemovido);
     mostrarCadastro(cadastro);
@@ -57,4 +52,11 @@ function removerCadastro(cadastroRemovido){ // função para remover cadastro
     // Atualizar o localStorage após a retirada
     localStorage.setItem('cadastro', JSON.stringify(cadastro));
 }
+
+const buttonAddNovo = document.getElementById('button-addNovo');
+buttonAddNovo.addEventListener('click', function() {
+    window.location.href = '../index.html';
+})
+
+
 

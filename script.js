@@ -30,6 +30,8 @@ function verificacaoCampos(){ // faz a verificação dos campos(inputs)
 
         if(verificarSenha(senha) === false){
             alert("A senha deve conter 8 caracteres");
+        } else if(verificaSenhaCaracterEspecial(senha) === false){
+            alert('A senha deve conter caracteres especiais EX: /[!@#$%^&*... ');
         } else if(verificarIdade(dataNascimento)){
             alert("Você não poderá seguir com o cadastro pois é menor der idade");
 
@@ -62,6 +64,16 @@ function verificarSenha(senha){
         return true;
     }
     
+}
+
+function verificaSenhaCaracterEspecial(senha){
+    const CaractereEspecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+    return CaractereEspecial.test(senha) // vai meu retornar se dentro da senha contem caracteres especiais
+}
+
+function verificarDataNascimento(){
+
 }
 
 function pegarElementosId(nomeId){ // função para facilitar na hora de pegar elementos com Id
