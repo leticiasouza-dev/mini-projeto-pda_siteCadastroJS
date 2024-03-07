@@ -68,6 +68,13 @@ function pegarElementosId(nomeId){ // função para facilitar na hora de pegar e
     return document.getElementById(nomeId);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    let cadastroJson = localStorage.getItem('cadastro');
+    if (cadastroJson) {
+        cadastro = JSON.parse(cadastroJson);
+    }
+});
+
 let botaoCadastro = document.getElementById('cadastro');
 
 botaoCadastro.addEventListener('click', function(evento){

@@ -39,11 +39,17 @@ h1{
 
 }
 
+.cadastro{
+    margin-bottom: 1rem;
+}
+
 .informacoes-cadastrado{
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    margin-bottom: 1rem;
 
 }
 
