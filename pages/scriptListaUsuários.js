@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () { // evento para recuperar o array
     // Tentar recuperar o array de cadastros do localStorage
     let cadastroJson = localStorage.getItem('cadastro');
 
@@ -14,8 +14,6 @@ function mostrarCadastro(cadastro){
     const sessaoPrincipal = document.getElementById('sessao-cadastros');
     sessaoPrincipal.innerHTML = ''
    
-    
-
     for(const pessoa of cadastro){ // percorrendo meu objeto no array
 
         const divInfosCadastrados = document.createElement('div');
@@ -30,7 +28,7 @@ function mostrarCadastro(cadastro){
             divInfosCadastrados.appendChild(p);
         }
 
-        const botaoEditar = document.createElement('button')
+        const botaoEditar = document.createElement('button');
         botaoEditar.textContent = 'Editar';
         divBotoes.appendChild(botaoEditar);
 
@@ -38,17 +36,13 @@ function mostrarCadastro(cadastro){
         botaoRemover.textContent = 'Remover';
         divBotoes.appendChild(botaoRemover);
 
-
+        botaoRemover.addEventListener('click', () => {removerCadastro(pessoa)});
 
         sessaoPrincipal.appendChild(divInfosCadastrados); // adicionando a minha sessão principal minha div com os paragrafos
         divInfosCadastrados.appendChild(divBotoes);
 
-        
     }
-    
-    
-    
-    
+
 }
 
 const buttonAddNovo = document.getElementById('button-addNovo');
@@ -56,14 +50,11 @@ buttonAddNovo.addEventListener('click', function() {
     window.location.href = '../index.html';
 })
 
+function removerCadastro(cadastroRemovido){ // função para remover cadastro
+    cadastro = cadastro.filter(pessoa => pessoa !== cadastroRemovido);
+    mostrarCadastro(cadastro);
 
-
-
-
-// let divBotoes = document.createElement('div');
-// divBotoes.className = 'botoes';
-
-// divInfosCadastrados.appendChild(divInfosCadastrados);
-// divBotoes.appendChild(divBotoes)
-
+    // Atualizar o localStorage após a retirada
+    localStorage.setItem('cadastro', JSON.stringify(cadastro));
+}
 
