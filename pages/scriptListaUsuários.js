@@ -14,19 +14,19 @@ function mostrarCadastro(cadastro){
     const sessaoPrincipal = document.getElementById('sessao-cadastros');
     sessaoPrincipal.innerHTML = ''
    
-    const divBotoes = document.createElement('div');
-    divBotoes.className = 'botoes';
+    
 
     for(const pessoa of cadastro){ // percorrendo meu objeto no array
-        const divCadastro = document.createElement('div');
-        divCadastro.className = 'cadastro';
 
         const divInfosCadastrados = document.createElement('div');
         divInfosCadastrados.className = 'informacoes-cadastrado';
 
+        const divBotoes = document.createElement('div');
+        divBotoes.className = 'botoes';
+
         for(const propriedade in pessoa){ // percorrendo cada propriedade do meu array(objeto)
             const p = document.createElement('p');
-            p.innerHTML = `${pessoa[propriedade]}`;
+            p.innerHTML = `${propriedade}:${pessoa[propriedade]}`;
             divInfosCadastrados.appendChild(p);
         }
 
@@ -38,10 +38,12 @@ function mostrarCadastro(cadastro){
         botaoRemover.textContent = 'Remover';
         divBotoes.appendChild(botaoRemover);
 
-        divCadastro.appendChild(divInfosCadastrados); // adicionando a minha sessão principal minha div com os paragrafos
-        divCadastro.appendChild(divBotoes);
 
-        sessaoPrincipal.appendChild(divCadastro);
+
+        sessaoPrincipal.appendChild(divInfosCadastrados); // adicionando a minha sessão principal minha div com os paragrafos
+        divInfosCadastrados.appendChild(divBotoes);
+
+        
     }
     
     
