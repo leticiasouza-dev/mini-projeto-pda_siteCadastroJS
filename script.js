@@ -4,7 +4,17 @@ class Pessoa{ //  classe pessoa onde vai receber os valores do meu input
         this.celular = celular;
         this.email = email;
         this.senha = senha;
-        this.dataNascimento = dataNascimento;
+        this.dataNascimento = this.formatacaoDataNascimento(dataNascimento);
+    }
+    formatacaoDataNascimento(dataNascimento){
+        const data = new Date(dataNascimento);
+
+        const dia = data.getDate();
+        const mes = data.getMonth() + 1;
+        const ano = data.getFullYear();
+
+        return `${dia}/${mes}/${ano}`;
+
     }
 }
 
@@ -84,6 +94,7 @@ function verificarDataNascimento(){
 function pegarElementosId(nomeId){ // função para facilitar na hora de pegar elementos com Id
     return document.getElementById(nomeId);
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     let cadastroJson = localStorage.getItem('cadastro');
