@@ -32,6 +32,39 @@ function mostrarCadastro(cadastro){
         botaoEditar.textContent = 'Editar';
         divBotoes.appendChild(botaoEditar);
 
+        botaoEditar.addEventListener('click', function() {
+            // Remover os elementos existentes antes de criar novos
+            divBotoes.innerHTML = '';
+
+            for (const propriedade in pessoa) {
+                const inputEditar = document.createElement('input');
+                inputEditar.type = 'text';
+                inputEditar.value = pessoa[propriedade];
+                inputEditar.placeholder = `Digite a alteração para ${propriedade}`;
+
+                divBotoes.appendChild(inputEditar);
+            }
+
+            const botaoSalvar = document.createElement('button');
+            botaoSalvar.textContent = 'Salvar';
+
+            botaoSalvar.addEventListener('click', function(){
+                // Atualizar as propriedades desejadas no objeto pessoa
+                for (let i = 0; i < divBotoes.children.length - 1; i++) {
+                    const propriedade = Object.keys(pessoa)[i];
+                    pessoa[propriedade] = divBotoes.children[i].value;
+                }
+
+                // Atualizar o localStorage após a edição
+                localStorage.setItem('cadastro', JSON.stringify(cadastro));
+
+                // Atualizar a exibição dos cadastros
+                mostrarCadastro(cadastro);
+            });
+
+            divBotoes.appendChild(botaoSalvar);
+        });
+
         const botaoRemover = document.createElement('button');
         botaoRemover.textContent = 'Remover';
         divBotoes.appendChild(botaoRemover);
