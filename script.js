@@ -30,8 +30,10 @@ function verificacaoCampos(){ // faz a verificação dos campos(inputs)
 
         if(verificarSenha(senha) === false){
             alert("A senha deve conter 8 caracteres");
+            return false
         } else if(verificaSenhaCaracterEspecial(senha) === false){
             alert('A senha deve conter caracteres especiais EX: /[!@#$%^&*... ');
+            return false
         } else if(verificarIdade(dataNascimento)){
             alert("Você não poderá seguir com o cadastro pois é menor der idade");
 
@@ -40,10 +42,13 @@ function verificacaoCampos(){ // faz a verificação dos campos(inputs)
                 input[i].value = '';
             }
 
+            return false
+
         } else{
             alert("Cadastro efetuado com sucesso");
            
             window.location.href = 'pages/listaFuncionariosCadastrados.html';
+            return true;
         }
         
     }
@@ -98,11 +103,11 @@ botaoCadastro.addEventListener('click', function(evento){
     let senha = pegarElementosId('senha').value;
     let dataNascimento = pegarElementosId('dataNascimento').value;
 
-    verificacaoCampos();
-
-  
-    const usuario = new Pessoa(nomeCompleto, celular, email, senha, dataNascimento);
-    cadastro.push(usuario);
+    if(verificacaoCampos() == true){
+        const usuario = new Pessoa(nomeCompleto, celular, email, senha, dataNascimento);
+        cadastro.push(usuario);
+    }
+    
 
     localStorage.setItem('cadastro', JSON.stringify(cadastro));
 })
